@@ -1,4 +1,6 @@
 package org.sourceit;
+import static java.lang.Math.*;
+import java.util.Random;
 
 public class HomeTask1 {
 
@@ -9,7 +11,8 @@ public class HomeTask1 {
      * @return является ли число четным.
      */
     public static boolean isEven(int number) {
-        return false;
+
+        return number % 2 == 0;
     }
 
     /**
@@ -22,7 +25,10 @@ public class HomeTask1 {
      * @return значение гипотенузы.
      */
     public static double findHypotenuse(double a, double b) {
-        return 0D;
+
+        double hipotenuza = 0;
+        if (a > 0 & b > 0) hipotenuza = sqrt(pow(a, 2d) + pow(b, 2d));
+        return hipotenuza;
     }
 
     /**
@@ -34,7 +40,9 @@ public class HomeTask1 {
      * @return периметр треугольника.
      */
     public static double perimeter(double a, double b, double c) {
-        return 0D;
+        double perimeterTriangle = 0;
+        if (a > 0 & b >0 & c >0) perimeterTriangle = a + b + c;
+        return perimeterTriangle;
     }
 
     /**
@@ -46,7 +54,10 @@ public class HomeTask1 {
      * @return площадь треугольника.
      */
     public static double area(double a, double b) {
-        return 0D;
+// a — base of the triangle, b — height triangle
+        double areaTriangle = 0;
+        if (a > 0 & b >0) areaTriangle = a * b / 2d;
+        return areaTriangle;
     }
 
     /**
@@ -57,7 +68,15 @@ public class HomeTask1 {
      * @return сгенерированное число.
      */
     public static int generateNumberFromRange(int min, int max) {
-        return 0;
+        Random randNum = new Random();
+        int randomNumberFromRange = 0;
+        if (max - min == 0){
+            randomNumberFromRange = max;
+        } else
+        {
+            randomNumberFromRange = randNum.nextInt(max - min) + min;
+        }
+        return randomNumberFromRange;
     }
 
     /**
@@ -69,7 +88,13 @@ public class HomeTask1 {
      * @return сумма цифр.
      */
     public static long calculateSum(long number) {
-        return 0L;
+        long sum = 0;
+        number = abs(number);
+        while (number != 0) {
+            sum += number % 10;
+            number /= 10;
+        }
+        return sum;
     }
 
     /**
@@ -81,7 +106,15 @@ public class HomeTask1 {
      * @return элемент последовательности.
      */
     public static int fibonacci(int till) {
-        return 0;
+        int consequent = 1;
+        if(till >= 0) {
+            if (till == 0 | till == 1) {
+                consequent = 1;
+            } else {
+                consequent = fibonacci(till - 2) + fibonacci(till - 1);
+            }
+        }
+        return consequent;
     }
 
     /**
@@ -93,6 +126,21 @@ public class HomeTask1 {
      * @return является ли билет счастливым.
      */
     public static boolean isHappy(long ticket) {
-        return false;
+        boolean happy = false;
+        if (ticket >= 1 & ticket <= 999999) {
+            long sumFirstThreeDigitsTicket = 0;
+            long sumSecondThreeDigitsTicket = 0;
+            for(int i = 1; i <= 3; i++) {
+                sumSecondThreeDigitsTicket += ticket % 10;
+                ticket /= 10;
+            }
+            for(int i = 1; i <= 3; i++) {
+                sumFirstThreeDigitsTicket += ticket % 10;
+                ticket /= 10;
+            }
+            if(sumFirstThreeDigitsTicket == sumSecondThreeDigitsTicket) happy = true;
+        }
+        return happy;
     }
+
 }
