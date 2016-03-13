@@ -54,9 +54,12 @@ public class HomeTask1 {
      * @return площадь треугольника.
      */
     public static double area(double a, double b) {
-// a — base of the triangle, b — height triangle
         double areaTriangle = 0;
-        if (a > 0 & b >0) areaTriangle = a * b / 2d;
+        if (a > 0 & b > 0) {
+            double hipotenuza = sqrt(a * a + b * b);
+            double halfPerimeterTriangle = (a + b + hipotenuza) / 2d;
+            areaTriangle = sqrt(halfPerimeterTriangle * (halfPerimeterTriangle - a) * (halfPerimeterTriangle - b) * (halfPerimeterTriangle - hipotenuza));
+        }
         return areaTriangle;
     }
 
